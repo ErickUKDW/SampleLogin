@@ -29,5 +29,30 @@ namespace SampleLogin.DAL
         }
 
 
+        public void Registrasi(Pengguna pengguna)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnStr()))
+            {
+                string strSql = @"insert into Pengguna(Username,Password,Aturan) 
+                                  values(@Username,@Password,@Aturan)";
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("Username", pengguna.Username);
+                cmd.Parameters.AddWithValue("Password", pengguna.Password);
+                cmd.Parameters.AddWithValue("Aturan", pengguna.Aturan);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Number.ToString() + " - " + sqlEx.Message);
+                }
+            }
+        }
+
+
     }
 }
