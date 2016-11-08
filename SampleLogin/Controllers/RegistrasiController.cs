@@ -17,9 +17,24 @@ namespace SampleLogin.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Index(Pengguna pengguna)
         {
-            
+            PenggunaDAL penggunaDAL = new PenggunaDAL();
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    penggunaDAL.Registrasi(pengguna);
+                    ViewBag.Pesan = "Data Pengguna berhasil ditambah !";
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View();
+            }
         }
     }
 }

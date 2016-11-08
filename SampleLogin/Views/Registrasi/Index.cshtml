@@ -6,14 +6,14 @@
 
 <h2>Registrasi Pengguna</h2>
 
+@ViewBag.Pesan
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Pengguna</h4>
-        <hr />
+      
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
