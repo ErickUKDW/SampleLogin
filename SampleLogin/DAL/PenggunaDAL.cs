@@ -38,7 +38,7 @@ namespace SampleLogin.DAL
                 SqlCommand cmd = new SqlCommand(strSql, conn);
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("Username", pengguna.Username);
-                cmd.Parameters.AddWithValue("Password", pengguna.Password);
+                cmd.Parameters.AddWithValue("Password", GetMD5Hash(pengguna.Password));
                 cmd.Parameters.AddWithValue("Aturan", pengguna.Aturan);
 
                 try
