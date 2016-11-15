@@ -169,6 +169,7 @@
     <Content Include="Views\SampleHash\Index.cshtml" />
     <Content Include="Views\Registrasi\Index.cshtml" />
     <Content Include="Views\Pengguna\Login.cshtml" />
+    <Content Include="Views\Pengguna\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
