@@ -54,5 +54,39 @@ namespace SampleLogin.DAL
         }
 
 
+        public Pengguna LoginPengguna(Pengguna pengguna)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnStr()))
+            {
+                string strSql = @"select * from Pengguna 
+                                  where Username=@Username and Password=@Password";
+
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("Username", pengguna.Username);
+                cmd.Parameters.AddWithValue("Password", GetMD5Hash(pengguna.Password));
+
+                Pengguna objPengguna = new Pengguna();
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if(dr.HasRows)
+                {
+                    while(dr.Read())
+                    {
+                        objPengguna.Username = dr["Username"].ToString();
+                        objPengguna.Password = dr["Password"].ToString();
+                        objPengguna.Aturan = dr["Aturan"].ToString();
+                    }
+                }
+                else
+                {
+                    objPengguna = null;
+                }
+
+                return pengguna;
+            }
+        }
+
+
     }
 }
