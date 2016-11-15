@@ -83,7 +83,7 @@ namespace SampleLogin.DAL
                     objPengguna = null;
                 }
 
-                return pengguna;
+                return objPengguna;
             }
         }
 
