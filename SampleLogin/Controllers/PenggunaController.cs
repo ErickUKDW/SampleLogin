@@ -53,5 +53,11 @@ namespace SampleLogin.Controllers
                 return View();
             }
         }
+
+        public ActionResult Logout()
+        {
+            Session["pengguna"] = null;
+            return RedirectToAction("Login");
+        }
     }
 }
