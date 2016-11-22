@@ -129,6 +129,7 @@
     <Compile Include="Controllers\PenggunaController.cs" />
     <Compile Include="Controllers\RegistrasiController.cs" />
     <Compile Include="Controllers\SampleHashController.cs" />
+    <Compile Include="DAL\CategoryDAL.cs" />
     <Compile Include="DAL\PenggunaDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
