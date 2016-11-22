@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Add Book</h2>
+
+@Html.DropDownList("ddCategory",(SelectList)ViewBag.SelectCategory)
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ddCategory").select2();
+        });
+    </script>    
+}
