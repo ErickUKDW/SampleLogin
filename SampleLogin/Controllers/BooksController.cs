@@ -22,6 +22,18 @@ namespace SampleLogin.Controllers
             return View();
         }
 
+        public ActionResult TampilCombo()
+        {
+            return View();
+        }
+
+        public JsonResult GetKategori()
+        {
+            CategoryDAL catDAL = new CategoryDAL();
+            var results = catDAL.GetAll();
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Books/Details/5
         public ActionResult Details(int id)
         {

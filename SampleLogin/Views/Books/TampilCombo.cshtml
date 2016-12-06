@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Tampil Combo";
+}
+
+<h2>Tampil Combo</h2>
+
+<form>
+    <div class="form-group">
+        <label for="kategori">Kategori:</label><br />
+        <input id="kategori" placeholder="Select kategori..."  />
+    </div>
+    <div class="form-group">
+        <label for="kategoriauto">Kategori:</label><br/>
+        <input id="kategoriauto" placeholder="Type kategori..."  />
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#kategori").kendoComboBox({
+                placeholder: "Select kategori",
+                dataTextField: "CategoryName",
+                dataValueField: "CategoryID",
+                filter: "contains",
+                minLength: 3,
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: {
+                            url: '@Url.Action("GetKategori","Books")',
+                        }
+                    }
+                }
+            });
+
+            $("#kategoriauto").kendoAutoComplete({
+                dataTextField: "CategoryName",
+                filter: "contains",
+                minLength: 3,
+                dataSource: {
+                    type: "json",
+                    serverFiltering: false,
+                    transport: {
+                        read: '@Url.Action("GetKategori", "Books")'
+                    }
+                }
+            });
+        });
+    </script>    
+}
